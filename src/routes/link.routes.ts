@@ -1,9 +1,10 @@
 import { Router } from "express";
+import MessageResponse from "../interfaces/MessageResponse";
 
 const linkRouter = Router();
 
-linkRouter.post('/create');
+linkRouter.post<{}, MessageResponse>('/create');
 
-linkRouter.get('/:id');
+linkRouter.get<{}, MessageResponse>('/:id');
 
 export default linkRouter;
