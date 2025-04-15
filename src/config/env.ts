@@ -7,4 +7,6 @@ export const {
   SERVER_URL,
   NODE_ENV,
   DB_URI,
+  ARCJET_KEY,
+  ARCJET_ENV
 } = process.env;

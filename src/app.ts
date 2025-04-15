@@ -10,10 +10,11 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(middlewares.arcjetMiddleware);
+app.use(express.json());
 app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
-app.use(express.json());
 
 app.use('/', linkRouter);
 
