@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares/middlewares';
+import linkRouter from './routes/link.routes';
 
 require('dotenv').config();
 
@@ -13,6 +14,8 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
+
+app.use('/api/v1/create', linkRouter);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
