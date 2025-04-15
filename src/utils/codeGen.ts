@@ -9,6 +9,3 @@ export const randomCodeGen = (size = 7) => {
 
   return code;
 }
-
-// Exemplo de uso
-console.log(randomCodeGen()); // Saída tipo: "3XyZ1kA"
