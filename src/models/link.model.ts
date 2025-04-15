@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const linkSchema = new mongoose.Schema({
-  link: {
+  originalLink: {
     type: String,
     required: [true, 'Link is required'],
   },
