@@ -9,6 +9,10 @@ const linkSchema = new mongoose.Schema({
   shortLink: {
     type: String
   },
+
+  shortLinkId: {
+    type: String
+  },
 }, { timestamps: true });
 
 const ShortLink = mongoose.model('ShortLink', linkSchema);
