@@ -4,7 +4,7 @@ import { createShortLink } from "../controllers/link.controller";
 
 const linkRouter = Router();
 
-linkRouter.post<{}, MessageResponse>('/', createShortLink);
+linkRouter.post<{}, MessageResponse>('/create', createShortLink);
 
 linkRouter.get<{}, MessageResponse>('/:id');
 

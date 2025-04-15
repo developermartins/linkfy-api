@@ -15,9 +15,11 @@ export const createShortLink = async (req: any, res: any, next: any) => {
 
     const { originalLink } = req.body;
 
-    const shortLink = `http://localhost:${PORT}/${randomCodeGen()}`;
+    const shortLinkId = randomCodeGen();
 
-    await ShortLink.create([{ originalLink, shortLink }], { session });
+    const shortLink = `http://localhost:${PORT}/${shortLinkId}`;
+
+    await ShortLink.create([{ originalLink, shortLink, shortLinkId }], { session });
 
     await session.commitTransaction();
     session.endSession();
