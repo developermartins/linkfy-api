@@ -49,7 +49,7 @@ export const useShortLink = async (req: Request, res: Response, next: NextFuncti
         message: 'Short link not found'
       });
     } else {
-      res.redirect(data?.originalLink);
+      res.redirect(data.originalLink);
     };
   } catch (error) {
     next(error);
