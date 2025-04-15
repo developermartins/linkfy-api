@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+import { LinkInterface } from "../interfaces/LinkInterface";
 
-const linkSchema = new mongoose.Schema({
+const linkSchema = new mongoose.Schema<LinkInterface>({
   originalLink: {
     type: String,
     required: [true, 'Link is required'],
@@ -15,6 +16,6 @@ const linkSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-const ShortLink = mongoose.model('ShortLink', linkSchema);
+const ShortLink = mongoose.model<LinkInterface>('ShortLink', linkSchema);
 
 export default ShortLink;

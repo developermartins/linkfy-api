@@ -3,11 +3,10 @@ import { SERVER_URL } from "../config/env";
 import ShortLink from "../models/link.model";
 import { randomCodeGen } from "../utils/codeGen";
 
-import {
-	StatusCodes,
-} from 'http-status-codes';
+import { StatusCodes } from 'http-status-codes';
+import { NextFunction, Request, Response } from "express";
 
-export const createShortLink = async (req: any, res: any, next: any) => {
+export const createShortLink = async (req: Request, res: Response, next: NextFunction) => {
   const session = await mongoose.startSession();
   session.startTransaction();
 
@@ -37,14 +36,21 @@ export const createShortLink = async (req: any, res: any, next: any) => {
   };
 };
 
-export const useShortLink = async (req: any, res: any, next: any) => {
+export const useShortLink = async (req: Request, res: Response, next: NextFunction) => {
   try {
 
     const { id } = req.params;
     
     const data = await ShortLink.findOne({ shortLinkId: id }).exec();
 
-    res.redirect(data?.originalLink);
+    if (!data) {
+      res.status(StatusCodes.NOT_FOUND).json({
+        succes: true,
+        message: 'Short link not found'
+      });
+    } else {
+      res.redirect(data?.originalLink);
+    };
   } catch (error) {
     next(error);
   };
